@@ -1,8 +1,11 @@
-using BepInEx;
-using RoR2;
+﻿using BepInEx;
 using R2API.Utils;
+using R2API.Networking;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using RiskOfOptions;
+using RiskOfOptions.Options;
+using RiskOfOptions.OptionConfigs;
 
 using NAudio.Wave;
 using NAudio.Wave.SampleProviders;
@@ -14,8 +17,10 @@ using System.Linq;
 using System.Xml;
 using System.Reflection;
 using System.Globalization;
+using BepInEx.Configuration;
 
-namespace OriginalSoundTrack {
+namespace OriginalSoundTrack
+{
     // The OriginalSoundTrack plugin - For replacing the in game music with Risk of Rain 1 music (or your own).
     // You will need access to your own risk of rain 1 sound files (or any others you want to use).
     // Edit the settings.xml to specify how the music plays in game.
@@ -23,15 +28,15 @@ namespace OriginalSoundTrack {
 
     //This attribute specifies that we have a dependency on R2API, as we're using it to add Bandit to the game.
     //You don't need this if you're not using R2API in your plugin, it's just to tell BepInEx to initialize R2API before this plugin so it's safe to use R2API.
-    [BepInDependency("com.bepis.r2api")]
+    //[BepInDependency("com.bepis.r2api")]
 
     //This attribute is required, and lists metadata for your plugin.
     //The GUID should be a unique ID for this plugin, which is human readable (as it is used in places like the config). I like to use the java package notation, which is "com.[your name here].[your plugin name here]"
     //The name is the name of the plugin that's displayed on load, and the version number just specifies what version the plugin is.
-    [BepInPlugin("com.kylepaulsen.originalsoundtrack", "OriginalSoundTrack", "1.2.0")]
-
-    [NetworkCompatibility(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
-
+    [BepInPlugin("com.mrcountermax.moreostsmod", "MoreOSTsMod", "2.0.0")]
+    //[R2APISubmoduleDependency(nameof(NetworkingAPI))]
+    [BepInDependency("com.rune580.riskofoptions")]
+    [NetworkCompatibilityAttribute(CompatibilityLevel.NoNeedForSync, VersionStrictness.DifferentModVersionsAreOk)]
     //This is the main declaration of our plugin class. BepInEx searches for all classes inheriting from BaseUnityPlugin to initialize on startup.
     //BaseUnityPlugin itself inherits from MonoBehaviour, so you can use this as a reference for what you can declare and use in your plugin class: https://docs.unity3d.com/ScriptReference/MonoBehaviour.html
     public class OriginalSoundTrack : BaseUnityPlugin {
@@ -45,24 +50,52 @@ namespace OriginalSoundTrack {
         private string currentSongFullName = ""; // helpful for not restarting a song when it's already playing.
         private bool startedTeleporterEvent = false; // tracks the first interaction with the tele.
         private bool songPaused = false; // for pausing the music when the player pauses.
-        private float globalMusicVolume = 0.5f; // default global music volume.
+        //private float globalMusicVolume = 0.5f; // default global music volume.
+        private float currentMusicVolume;
+        private ConfigEntry<float> globalMusicVolume;
         private bool shouldLoop = true; // should songs loop when they end?
         private string oldMusicVolume = ""; // what the music convar was before we override it.
         private string currentScene = ""; // helpful for picking out boss music.
         private System.Random rnd = new System.Random(); // helpful for picking random music.
         private XmlElement settings; // settings data.
 
+        private Texture2D modIconTexture;
+
         //The Awake() method is run at the very start when the game is initialized.
         public void Awake() {
             var pluginPath = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var musicPath = pluginPath;
+
+            globalMusicVolume = Config.Bind(new ConfigDefinition("General", "Volume"), 40f, new ConfigDescription("The volume of the More OSTs Mod music. KEEP THE GAME'S MUSIC VOLUME AT 0!!!", new AcceptableValueRange<float>(0, 100)));
+            ModSettingsManager.AddOption(new StepSliderOption(globalMusicVolume, new StepSliderConfig{
+                min = 0f,
+                max = 100f,
+                increment = 1f,
+                formatString = "{0:0}%"
+            }));
+
+            globalMusicVolume.SettingChanged += (_, __) => UpdateVolume();
+
+
+            modIconTexture = new Texture2D(0, 0);
+
+            using (Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("OriginalSoundTrack.ror2_more_osts_mod_clean.png"))
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                stream.CopyTo(memoryStream);
+                byte[] data = memoryStream.ToArray();
+                modIconTexture.LoadImage(data);
+            }
+
+            Sprite modIconSprite = Sprite.Create(modIconTexture, new Rect(0, 0, modIconTexture.width, modIconTexture.height), new Vector2(0, 0));
+            ModSettingsManager.SetModIcon(modIconSprite);
 
             try {
                 var settingsXml = new XmlDocument();
                 settingsXml.Load(pluginPath + "/settings.xml");
                 settings = settingsXml["settings"];
 
-                globalMusicVolume = float.Parse(settings["volume"].InnerText, CultureInfo.InvariantCulture);
+                //globalMusicVolume = float.Parse(settings["volume"].InnerText, CultureInfo.InvariantCulture);
                 shouldLoop = settings["loop"].InnerText.ToLower() == "true";
 
                 if (settings["music-path"] != null) {
@@ -145,6 +178,9 @@ namespace OriginalSoundTrack {
                 }
             };
 
+            // On.EntityStates.VoidRaidCrab.SpawnState.OnEnter
+            // On.EntityStates.VoidRaidCrab.SpawnState.DeathState
+
             On.EntityStates.Missions.BrotherEncounter.Phase1.OnEnter += (orig, self) => {
                 orig(self);
                 Debug.Log("====================== FINAL BOSS FIGHT START ======================");
@@ -168,6 +204,10 @@ namespace OriginalSoundTrack {
                     PickOutMusic();
                 }
             };
+        }
+
+        private void UpdateVolume() {
+            currentSong.Volume = currentMusicVolume * globalMusicVolume.Value/100f;
         }
 
         private FileInfo[] SearchForAudioFiles(string path) {
@@ -246,6 +286,7 @@ namespace OriginalSoundTrack {
         }
 
         private IEnumerator<WaitForSeconds> PlayMusic(string file, float volume = 1f) {
+            currentMusicVolume = volume;
             if (file != currentSongFullName) {
                 currentSongFullName = file;
                 if (outputDevice.PlaybackState == PlaybackState.Playing) {
@@ -255,7 +296,7 @@ namespace OriginalSoundTrack {
                     currentSong = null;
                 }
                 currentSong = new AudioFileReader(file);
-                currentSong.Volume = volume * globalMusicVolume;
+                UpdateVolume();
                 var looper = new LoopStream(currentSong, shouldLoop);
                 fader = new FadeInOutSampleProvider(new WaveToSampleProvider(looper));
                 outputDevice.Init(fader);
