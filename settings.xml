@@ -1,17 +1,13 @@
-<?xml version = "1.0"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <settings>
-    <!-- Master volume for all music. Decimal between 0 and 1 -->
-    <volume>0.5</volume>
-
-    <!-- Should music loop? If not true, then another song is selected from scene matches -->
-    <loop>true</loop>
-
-    <!-- To have this plugin scan a different directory for music files,
+  <!-- Master volume for all music. Decimal between 0 and 1 -->
+  <volume>0.4</volume>
+  <!-- Should music loop? If not true, then another song is selected from scene matches -->
+  <loop>false</loop>
+  <!-- To have this plugin scan a different directory for music files,
         Uncomment <music-path> below (remove <!- - and - -> from the line below) -->
-
-    <!-- <music-path>C:\Users\YourName\Music\SomeMusicFolder</music-path> -->
-
-    <!--
+  <!-- <music-path>C:\Users\YourName\Music\SomeMusicFolder</music-path> -->
+  <!--
         Here is where you define what songs are used in which scenes and if they are
         "boss" music (played during teleporter events or not).
 
@@ -45,126 +41,511 @@
         then this plugin will choose one randomly. If NO matches are found, then the plugin will choose a random
         sound file it found in the plugin folder.
     -->
-    <music>
-        <song
-            name="01 Risk of Rain.mp3"
-            scenes="splash,intro,title,lobby,logbook,bazaar,crystalworld,eclipseworld"
-            boss="false"
-            volume="1"
+  <music>
+    <song
+		name="coordinates that r2modman cannot read ror1.mp3"
+		scenes="foggyswamp,rootjungle"
+		boss="false"
+		volume="0.5"
         />
-        <song
-            name="02 Dew Point.mp3"
-            scenes="blackbeach,golemplains,goolake,foggyswamp"
-            boss="true"
-            volume="1"
+    <song
+		name="arctic oscillation ror1.mp3"
+		scenes="skymeadow,itskymeadow"
+		boss="false"
+		volume="0.5"
         />
-        <song
-            name="03 Tropic of Capricorn.mp3"
-            scenes="dampcavesimple"
-            boss="false"
-            volume="1"
+    <song
+		name="localized entirely within your kitchen ror1.mp3"
+		scenes="golemplains,golemplains2,snowyforest,itgolemplains"
+		boss="false"
+		volume="0.5"
         />
-        <song
-            name="04 Monsoon.mp3"
-            scenes="blackbeach,golemplains"
-            boss="false"
-            volume="1"
+    <song
+		name="autumn song ror1.mp3"
+		scenes="wispgraveyard"
+		boss="false"
+		volume="0.5"
         />
-        <song
-            name="05 Cyclogenesis.mp3"
-            scenes="foggyswamp,shipgraveyard,arena"
-            boss="false"
-            volume="1"
+    <song
+		name="coalescence ror1.mp3"
+		scenes="moon2,itmoon"
+		boss="false"
+		volume="0.5"
         />
-        <song
-            name="06 25.3 N 91.7 E.mp3"
-            scenes="outro"
-            boss="false"
-            volume="1"
+    <song
+		name="cyclogenesis ror1.mp3"
+		scenes="goolake,itgoolake"
+		boss="false"
+		volume="0.5"
         />
-        <song
-            name="06 25.3 N 91.7 E.mp3"
-            scenes="mysteryspace"
-            boss="false"
-            volume="0"
+    <song
+		name="dew point ror1.mp3"
+		scenes="golemplains,golemplains2,foggyswamp"
+		boss="true"
+		volume="0.5"
         />
-        <song
-            name="07 Hailstorm.mp3"
-            scenes="goldshores"
-            boss="false"
-            volume="1"
+
+    <song
+		name="dew point ror1 alt.mp3"
+		scenes="golemplains,golemplains2,foggyswamp"
+		boss="true"
+		volume="0.5"
         />
-        <song
-            name="07 Hailstorm.mp3"
-            scenes="frozenwall,wispgraveyard,dampcavesimple,shipgraveyard"
-            boss="true"
-            volume="1"
+    <song
+		name="double demonetized rainbow ror1.mp3"
+		scenes="shipgraveyard,rootjungle"
+		boss="true"
+		volume="0.5"
         />
-        <song
-            name="08 Moisture Deficit.mp3"
-            scenes="goolake,wispgraveyard"
-            boss="false"
-            volume="1"
+    <song
+		name="double demonetized rainbow alt ror1.mp3"
+		scenes="shipgraveyard,rootjungle"
+		boss="true"
+		volume="0.5"
         />
-        <song
-            name="10 Tropic of Cancer.mp3"
-            scenes="foggyswamp,goolake,wispgraveyard,frozenwall,skymeadow"
-            boss="true"
-            volume="1"
+    <song
+		name="double demonetized rainbow alt 2 ror1.mp3"
+		scenes="shipgraveyard,rootjungle"
+		boss="true"
+		volume="0.5"
         />
-        <song
-            name="11 Aurora Borealis.mp3"
-            scenes="blackbeach,golemplains,frozenwall"
-            boss="false"
-            volume="1"
+    <song
+		name="hailstorm ror1.mp3"
+		scenes="sulfurpools,dampcavesimple,dampcave"
+		boss="true"
+		volume="0.5"
         />
-        <song
-            name="12 Surface Tension.mp3"
-            scenes="blackbeach,golemplains,goolake,foggyswamp,skymeadow"
-            boss="true"
-            volume="1"
+   <song
+		name="moisture deficit ror1.mp3"
+		scenes="goolake,wispgraveyard"
+		boss="true"
+		volume="0.5"
         />
-        <song
-            name="13 Arctic Oscillation.mp3"
-            scenes="frozenwall,skymeadow"
-            boss="false"
-            volume="1"
+   <song
+		name="moisture deficit alt ror1.mp3"
+		scenes="goolake,wispgraveyard"
+		boss="true"
+		volume="0.5"
         />
-        <song
-            name="14 Precipitation.mp3"
-            scenes="limbo"
-            boss="false"
-            volume="1"
+   <song
+		name="winds of destruction ror1.mp3"
+		scenes="blackbeach,blackbeach2"
+		boss="false"
+		volume="0.5"
         />
-        <song
-            name="14 Precipitation.mp3"
-            scenes="moon"
-            boss="true"
-            volume="1"
+   <song
+		name="title theme ror1.mp3"
+		scenes="eclipseworld"
+		boss="false"
+		volume="0.5"
         />
-        <song
-            name="15 Double Fucking Rainbow.mp3"
-            scenes="goldshores,artifactworld"
-            boss="false"
-            volume="1"
+   <song
+		name="title theme alt ror1.mp3"
+		scenes="eclipseworld"
+		boss="false"
+		volume="0.5"
         />
-        <song
-            name="15 Double Fucking Rainbow.mp3"
-            scenes="dampcavesimple,shipgraveyard"
-            boss="true"
-            volume="1"
+   <song
+		name="surface tension ror1.mp3"
+		scenes="blackbeach,blackbeach2,golemplains,golemplains2,snowyforest"
+		boss="true"
+		volume="0.5"
         />
-        <song
-            name="16 Coalescence.mp3"
-            scenes="moon"
-            boss="false"
-            volume="1"
+   <song
+		name="surface tension alt ror1.mp3"
+		scenes="blackbeach,blackbeach2,golemplains,golemplains2,snowyforest"
+		boss="true"
+		volume="0.5"
         />
-        <song
-            name="17 Chanson d'Automne.mp3"
-            scenes="wispgraveyard,goolake,foggyswamp,skymeadow"
-            boss="false"
-            volume="1"
+   <song
+		name="tropic of cancer ror1.mp3"
+		scenes="frozenwall,dampcavesimple,dampcave,shipgraveyard"
+		boss="true"
+		volume="0.5"
         />
-    </music>
+   <song
+		name="tropic of cancer alt ror1.mp3"
+		scenes="frozenwall,dampcavesimple,dampcave,shipgraveyard"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="tropic of capricorn ror1.mp3"
+		scenes="dampcavesimple,dampcave,itdampcave"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="ashes to many ashes deadbolt.mp3"
+		scenes="sulfurpools"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="blood on the dancefloor deadbolt.mp3"
+		scenes="artifactworld"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="break of dawn deadbolt.mp3"
+		scenes="mysteryspace"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="defunktorum deadbolt.mp3"
+		scenes="arena"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="dies irae deadbolt.mp3"
+		scenes="voidstage"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="hemolysis deadbolt.mp3"
+		scenes="voidstage"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="heynong man deadbolt.mp3"
+		scenes="rootjungle"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="now i am become death deadbolt.mp3"
+		scenes="limbo"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="reaper blues deadbolt.mp3"
+		scenes="ancientloft,itancientloft"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="the banality of eternity deadbolt.mp3"
+		scenes="goldshores"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="the choir invisible alt deadbolt.mp3"
+		scenes="dampcavesimple,dampcave,itdampcave"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="the great beyond deadbolt.mp3"
+		scenes="arena"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="the proverbial dust biters deadbolt.mp3"
+		scenes="shipgraveyard"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="the way of dodo deadbolt.mp3"
+		scenes="bazaar"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="undead man walkin deadbolt.mp3"
+		scenes="arena"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="werner and claus deadbolt.mp3"
+		scenes="artifactworld"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="he did not lie a glacier can fart ror2.mp3"
+		scenes="arena"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="coalescence 2 electric boogaloo ror2.mp3"
+		scenes="moon2,itmoon"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="koppen as redacted alt ror2.mp3"
+		scenes="foggyswamp,ancientloft,wispgraveyard,shipgraveyard"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="koppen as redacted alt 2 ror2.mp3"
+		scenes="foggyswamp,ancientloft,wispgraveyard,shipgraveyard"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="koppen as redacted alt 3 ror2.mp3"
+		scenes="foggyswamp,ancientloft,wispgraveyard,shipgraveyard"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="arctic oscillation but more epic ror2.mp3"
+		scenes="skymeadow"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="arctic oscillation but more epic alt ror2.mp3"
+		scenes="skymeadow"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="arctic oscillation but more epic alt 2 ror2.mp3"
+		scenes="skymeadow"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="disdrometer ror2.mp3"
+		scenes="golemplains,golemplains2,wispgraveyard,itgolemplains"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="evapotranspiration ror2.mp3"
+		scenes="blackbeach,blackbeach2"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="aliens from movie signs ror2.mp3"
+		scenes="snowyforest,frozenwall,dampcavesimple,dampcave,rootjungle"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="aliens from movie signs alt ror2.mp3"
+		scenes="snowyforest,frozenwall,dampcavesimple,dampcave,rootjungle"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="into the doldrums ror2.mp3"
+		scenes="frozenwall,goldshores,itfrozenwall"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="coalescense alyx ror2.mp3"
+		scenes="outro"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="nocturnal emission ror2.mp3"
+		scenes="foggyswamp"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="as long as you have enough rubies ror2.mp3"
+		scenes="bazaar"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="2001 space oddysey ror2.mp3"
+		scenes="mysteryspace"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="2001 space oddysey alt ror2.mp3"
+		scenes="limbo"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="title themes combined ror2.mp3"
+		scenes="title,lobby,logbook,crystalworld"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="terra pluviam ror2.mp3"
+		scenes="goolake,dampcavesimple,dampcave,itdampcave"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="the rain formerly known as autumn song ror2.mp3"
+		scenes="skymeadow,itskymeadow"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="the raindrop that fell to the sky ror2.mp3"
+		scenes="shipgraveyard,artifactworld"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="thermodynamic equilibrium ror2.mp3"
+		scenes="blackbeach,blackbeach2,goolake"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="thermodynamic equilibrium alt ror2.mp3"
+		scenes="blackbeach,blackbeach2,goolake"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="thermodynamic equilibrium alt 2 ror2.mp3"
+		scenes="blackbeach,blackbeach2,goolake"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="through a cloud darkly ror2.mp3"
+		scenes="splash,intro"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="a boat made from a sheet of newspaper sotv.mp3"
+		scenes="wispgraveyard,sulfurpools"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="a boat made from a sheet of newspaper alt sotv.mp3"
+		scenes="wispgraveyard,sulfurpools"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="a placid isle of ignorance sotv.mp3"
+		scenes="voidstage"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="having fallen it was blood sotv.mp3"
+		scenes="blackbeach,blackbeach2,snowyforest,ancientloft"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="having fallen it was blood alt sotv.mp3"
+		scenes="blackbeach,blackbeach2,snowyforest,ancientloft"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="once a lullaby sotv.mp3"
+		scenes="ancientloft,itancientloft"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="out of whomst coochie came the ice sotv.mp3"
+		scenes="snowyforest,frozenwall,itfrozenwall"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="raindrop prelude sotv.mp3"
+		scenes="infinitetowerworld"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="raindrop prelude alt sotv.mp3"
+		scenes="infinitetowerworld"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="the face of the giant enemy spidercrab sotv.mp3"
+		scenes="voidraid"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="the face of the giant enemy spidercrab alt sotv.mp3"
+		scenes="voidraid"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="the face of the giant enemy spidercrab sotv.mp3"
+		scenes="voidraid"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="the face of the giant enemy spidercrab alt sotv.mp3"
+		scenes="voidraid"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="they might as well be dead sotv.mp3"
+		scenes="rootjungle"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="who can fathom the raindrop dark souls version sotv.mp3"
+		scenes="sulfurpools,itgoolake"
+		boss="false"
+		volume="0.5"
+        />
+   <song
+		name="mithrix beats 1.mp3"
+		scenes="moon2"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="mithrix beats 2.mp3"
+		scenes="moon2"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="mithrix beats 3.mp3"
+		scenes="moon2"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="mithrix beats 4.mp3"
+		scenes="moon2"
+		boss="true"
+		volume="0.5"
+        />
+   <song
+		name="psgc ror2.mp3"
+		scenes="loadingbasic"
+		boss="false"
+		volume="0.5"
+        />
+  </music>
 </settings>
